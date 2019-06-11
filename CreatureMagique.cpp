@@ -4,7 +4,7 @@ CreatureMagique::CreatureMagique() : bonus_(0)
 {
 	attaqueMagique_ = nullptr;
 }
-
+ 
 CreatureMagique::CreatureMagique(const Creature& creature, unsigned int bonus) :bonus_(bonus), Creature(creature)
 {
 	attaqueMagique_ = nullptr;
@@ -57,18 +57,18 @@ void CreatureMagique::attaquer(const Pouvoir & pouvoir, Creature & creature)
         modifierPointDeVie(obtenirPointDeVieTotal());
     }
 	 
-	if (!attaqueMagique_->estFini()) //Si l'État est encore applicable
+	if (!attaqueMagique_->estFini()) //Si l'Ã‰tat est encore applicable
 	{
-		attaqueMagique_->appliquerAttaque(creature);  //On applique l'état sur la créature adverse
+		attaqueMagique_->appliquerAttaque(creature);  //On applique l'Ã©tat sur la crÃ©ature adverse
 	}
-	Creature::attaquer(pouvoir, creature); //Ensuite on attaque la créature
+	Creature::attaquer(pouvoir, creature); //Ensuite on attaque la crÃ©ature
 }
 
 std::ostream& operator<<(std::ostream & os, const CreatureMagique& creature)
 {
 	Creature c(creature);
-	os << c << "Cette créature de la " << creature.obtenirTypeCreature() << "a aussi une attaque magique de type " << creature.obtenirAttaque()->obtenirTypeAttaque();
-	os << " qui a une durée de " << creature.obtenirAttaque()->obtenirDuree() << std::endl;
+	os << c << "Cette crÃ©ature de la " << creature.obtenirTypeCreature() << "a aussi une attaque magique de type " << creature.obtenirAttaque()->obtenirTypeAttaque();
+	os << " qui a une durÃ©e de " << creature.obtenirAttaque()->obtenirDuree() << std::endl;
     return os;
 }
 
