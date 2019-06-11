@@ -8,7 +8,7 @@ Description: La classe Pouvoir correspond aux differents attaques
 #ifndef POUVOIR_H
 #define POUVOIR_H
 
-#include <string>
+#include <string> 
 #include <iostream>
 
 
