@@ -161,7 +161,7 @@ public:
 	int operator()() {
 
 		srand(time(NULL));
-		return (borneInf_ + rand() % (borneSup_ - borneInf_));
+		return (borneInf_ + rand() % (borneSup_ - borneInf_+1));
 
 	}
 
