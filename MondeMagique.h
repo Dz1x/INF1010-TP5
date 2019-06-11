@@ -27,7 +27,7 @@ public:
 	MondeMagique&operator-=(T* t);
 	MondeMagique&operator+=(S* s);
 	MondeMagique&operator-=(S* s);
-private:
+protected:
 
 
 list<S*> listCompagnon_;
