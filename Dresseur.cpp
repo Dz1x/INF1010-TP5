@@ -36,13 +36,14 @@ auto Dresseur::obtenirCreatures() const
 	return creatures_;
 }
 
-Creature* Dresseur::obtenirUneCreature(const std::string& nom) const //À MODIFIFIER !!
+Creature* Dresseur::obtenirUneCreature(const std::string& nom) const 
 {
-    /*complétez moi*/
-	return;
+    
+	return *find_if(creatures_.begin(), creatures_.end(),FoncteurCreaturesDeMemeNom(nom));
+	return nullptr;
 }
 
-void Dresseur::modifierCreature(std::list<Creature*> creatures) //A Compléter
+void Dresseur::modifierCreature(std::list<Creature*> creatures) //A ComplÃ©ter
 {
 	creatures_ = creatures;
 }
@@ -107,15 +108,21 @@ void Dresseur::modifierEquipe(const std::string& equipe)
 	equipe_ = equipe;
 }
 
-bool Dresseur::operator==(const Dresseur& dresseur) const //A compléter
+bool Dresseur::operator==(const Dresseur& dresseur) const //A complÃ©ter
 {
+	
     if (creatures_.size() == 0 && dresseur.creatures_.size() == 0)
         return true;
     else if (creatures_.size() != dresseur.creatures_.size())
         return false;
 
-    /*Complétez moi! Vérifiez l'égalité entre les créatures via
-    find_if*/
+	for(Creature* creature:dresseur.obtenirCreatures())
+	{
+		if(find_if(creatures_.begin(),creatures_.end(),FoncteurCreaturesDeMemeNom(creature->obtenirNom()))==creatures_.end());
+			return false;
+		
+	}
+
 
 	return true;
 }
