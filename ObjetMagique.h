@@ -11,7 +11,7 @@ Description: La classe ObjetMagique correspond aux differents objets utilisables
 
 #include <string>
 #include <iostream>
-
+ 
 
 class ObjetMagique
 {
