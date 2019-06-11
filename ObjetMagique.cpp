@@ -8,7 +8,7 @@ ObjetMagique::ObjetMagique()
 ObjetMagique::ObjetMagique(const std::string & nom, int bonus):
 	nom_(nom), bonus_(bonus)
 {
-}
+} 
 
 
 ObjetMagique::~ObjetMagique()
