@@ -11,10 +11,12 @@ Description: les dresseurs sont les etres capables d'attraper des creatures
 #include <string>
 #include <iostream>
 #include <list>
-
+#include <algorithm>
+#include <string>
+#include "Foncteur.h"
 #include "Creature.h"
 #include "ObjetMagique.h"
-
+using namespace std;
 class Dresseur
 {
 public:
@@ -28,7 +30,7 @@ public:
 	unsigned int obtenirNombreCreatures() const;
 
 	auto obtenirCreatures() const;
-	Creature* obtenirUneCreature(const std::string& nom) const; //À MODIFIFIER !!
+	Creature* obtenirUneCreature(const string&nom) const; //Ã€ MODIFIFIER !!
 	void modifierCreature(std::list<Creature*>  creatures);
 	
 	bool ajouterCreature(Creature* creature);
@@ -47,13 +49,51 @@ public:
 	bool operator==(const Dresseur& dresseur) const;
 	bool operator==(const std::string& nom) const;
 	friend bool operator==(const std::string& nom, const Dresseur& dresseur);
+	template<typename Unaire>
+	void appliquerFoncteurUnaire(Unaire& unaire);
+	template<typename foncteurUnaire>
+	void supprimerElement(foncteurUnaire&foncteur);
+	template<typename foncteurOrdre>
+	Creature*	obtenirCreatureMax(foncteurOrdre&foncteur);
 
 private:
+	list <Creature*> creatures_;
+
 	std::string nom_;
 	std::string equipe_;
 	ObjetMagique objetMagique_;
-	// À COMPLÉTER !! créatures
+	
 
 };
 
 #endif
+
+template<typename Unaire>
+void Dresseur::appliquerFoncteurUnaire(Unaire&unaire)
+{
+	for (Creature* creature : creatures_) {
+		unaire(creature);
+	}
+}
+
+template<typename foncteurUnaire>
+inline void Dresseur::supprimerElement(foncteurUnaire & foncteur)
+{
+	creatures_.remove_if(foncteur());
+}
+
+template<typename foncteurOrdre>
+inline Creature * Dresseur::obtenirCreatureMax(foncteurOrdre & foncteur)
+{
+	
+	creatures_.sort(foncteur);
+	return creatures_.back();
+}
+
+
+
+
+
+
+
+
