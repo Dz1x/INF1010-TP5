@@ -13,7 +13,7 @@ Pouvoir::Pouvoir(const std::string& nom,
 }
 
 
-Pouvoir::~Pouvoir()
+Pouvoir::~Pouvoir() 
 {
 }
 
@@ -72,5 +72,5 @@ bool Pouvoir::operator==(const Pouvoir& pouvoir) const
 
 std::ostream& operator<<(std::ostream& os, const Pouvoir& pouvoir)
 {
-	return os << pouvoir.nom_ << " possede un nombre de dégat de " << pouvoir.nombreDeDegat_ << " et une energie necessaire de " << pouvoir.energieNecessaire_ << std::endl;
+	return os << pouvoir.nom_ << " possede un nombre de dÃ©gat de " << pouvoir.nombreDeDegat_ << " et une energie necessaire de " << pouvoir.energieNecessaire_ << std::endl;
 }
